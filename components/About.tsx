@@ -56,7 +56,7 @@ const About: React.FC = () => {
               
               <div className="relative aspect-square w-full max-w-md overflow-hidden rounded-[3.2rem] bg-black">
                  <img 
-                  src="https://i.ibb.co/4nnqJThh/Jan-28-2026-10-40-35-PM.png" 
+                  src="file:///C:/Users/aatul/Downloads/Jan_28__2026__10_40_35_PM-removebg-preview.png" 
                   alt="Ruin Character Profile"
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                 />

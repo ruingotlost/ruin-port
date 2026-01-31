@@ -3,6 +3,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
+  const scrollToId = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-center gap-16">
@@ -12,18 +23,18 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.8, x: -50 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative group"
+          className="relative group z-20"
         >
           {/* Diffused Glow */}
           <div className="absolute -inset-10 bg-blue-500/10 rounded-full blur-[100px] group-hover:bg-blue-500/20 transition-all duration-1000"></div>
           
-          <div className="relative aspect-square w-64 md:w-[400px] rounded-[3rem] overflow-hidden border border-white/10 glass-card p-2 shadow-2xl">
+          <div className="relative aspect-square w-64 md:w-[400px] rounded-[3rem] overflow-hidden border border-white/10 glass-card p-2 shadow-2xl bg-black/20">
             {/* Corner Accent */}
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/20 to-transparent transform rotate-45 translate-x-12 -translate-y-12"></div>
             
-            <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-[#111]">
+            <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-[#0a0a0a]">
               <img 
-                src="https://i.ibb.co/4nnqJThh/Jan-28-2026-10-40-35-PM.png" 
+                src="file:///C:/Users/aatul/Downloads/Jan_28__2026__10_40_35_PM-removebg-preview.png" 
                 alt="Ruin Character"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
@@ -41,7 +52,7 @@ const Hero: React.FC = () => {
           <motion.div 
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-6 -right-6 glass-card px-5 py-2 rounded-xl border-blue-500/30 text-[10px] tracking-[0.4em] font-cinematic text-blue-400 shadow-xl"
+            className="absolute -top-6 -right-6 glass-card px-5 py-2 rounded-xl border border-blue-500/30 text-[10px] tracking-[0.4em] font-cinematic text-blue-400 shadow-xl bg-black/80"
           >
             ACTIVE SESSION
           </motion.div>
@@ -54,7 +65,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <h1 className="font-cinematic text-7xl md:text-8xl lg:text-9xl tracking-tighter leading-none mb-6">
+            <h1 className="font-cinematic text-7xl md:text-8xl lg:text-9xl tracking-tighter leading-none mb-6 select-none">
               PORTFOLIO <br/>
               <span className="text-white/10 group-hover:text-white/30 transition-colors duration-1000">2025</span>
             </h1>
@@ -70,15 +81,21 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="flex flex-wrap items-center justify-center md:justify-start gap-8"
+            className="flex flex-wrap items-center justify-center md:justify-start gap-8 z-30 relative"
           >
-            <a href="#portfolio" className="group relative px-12 py-5 glass-card rounded-full overflow-hidden border border-blue-500/30">
+            <button 
+              onClick={(e) => scrollToId(e, 'portfolio')}
+              className="group relative px-12 py-5 glass-card rounded-full overflow-hidden border border-blue-500/30 active:scale-95 transition-transform"
+            >
               <span className="relative z-10 font-cinematic tracking-[0.2em] text-xs group-hover:text-blue-400 transition-colors">INITIALIZE PROJECT</span>
               <div className="absolute inset-0 bg-blue-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-            </a>
-            <a href="#about" className="text-white/30 hover:text-white font-cinematic tracking-[0.2em] text-xs transition-all duration-300 border-b border-white/5 hover:border-blue-500/50 pb-1">
+            </button>
+            <button 
+              onClick={(e) => scrollToId(e, 'about')}
+              className="text-white/30 hover:text-white font-cinematic tracking-[0.2em] text-xs transition-all duration-300 border-b border-white/5 hover:border-blue-500/50 pb-1 active:scale-95"
+            >
               SYSTEM PROFILE
-            </a>
+            </button>
           </motion.div>
         </div>
       </div>
@@ -87,7 +104,7 @@ const Hero: React.FC = () => {
       <motion.div 
         animate={{ y: [0, 15, 0] }}
         transition={{ duration: 2.5, repeat: Infinity }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-20"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-20 pointer-events-none"
       >
         <span className="uppercase text-[9px] tracking-[0.6em] font-medium">Scroll down</span>
         <div className="w-[1px] h-16 bg-gradient-to-b from-white via-white/50 to-transparent"></div>

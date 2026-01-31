@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
             <div className="relative p-1 glass-card rounded-[4rem] border-blue-500/20 shadow-2xl">
               <div className="relative aspect-square w-72 md:w-96 rounded-[3.8rem] overflow-hidden bg-black">
                 <img 
-                  src="https://i.ibb.co/4nnqJThh/Jan-28-2026-10-40-35-PM.png" 
+                  src="file:///C:/Users/aatul/Downloads/Jan_28__2026__10_40_35_PM-removebg-preview.png" 
                   alt="Ruin Contact Profile"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                 />
